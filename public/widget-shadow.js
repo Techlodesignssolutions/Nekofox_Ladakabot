@@ -23,9 +23,9 @@
   
   // Load your app bundle
   const script = document.createElement('script');
-  script.src = '/chatbot-bundle.js';
+  script.src = 'https://nekofox-ladakabot-djrp.vercel.app/chatbot-bundle.js';
   script.onload = function() {
     window.mountNekoFoxChat('nekofox-chatbot-root', shadow);
   };
   shadow.appendChild(script);
-})(); 
+})();
