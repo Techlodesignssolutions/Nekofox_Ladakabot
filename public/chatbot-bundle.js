@@ -1,15 +1,46 @@
-import { createRoot } from 'react-dom/client';
-import ChatApp from './ChatApp';
+"use strict";(()=>{var W=Object.create;var E=Object.defineProperty;var X=Object.getOwnPropertyDescriptor;var Y=Object.getOwnPropertyNames;var Z=Object.getPrototypeOf,G=Object.prototype.hasOwnProperty;var s=(e=>typeof require<"u"?require:typeof Proxy<"u"?new Proxy(e,{get:(t,o)=>(typeof require<"u"?require:t)[o]}):e)(function(e){if(typeof require<"u")return require.apply(this,arguments);throw Error('Dynamic require of "'+e+'" is not supported')});var ee=(e,t,o,r)=>{if(t&&typeof t=="object"||typeof t=="function")for(let a of Y(t))!G.call(e,a)&&a!==o&&E(e,a,{get:()=>t[a],enumerable:!(r=X(t,a))||r.enumerable});return e};var f=(e,t,o)=>(o=e!=null?W(Z(e)):{},ee(t||!e||!e.__esModule?E(o,"default",{value:e,enumerable:!0}):o,e));var R=s("react-dom/client");var p=f(s("react"));var c=s("react");var v=f(s("react")),z=s("@radix-ui/react-slot"),P=s("class-variance-authority");var j=s("clsx"),S=s("tailwind-merge");function i(...e){return(0,S.twMerge)((0,j.clsx)(e))}var te=(0,P.cva)("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",{variants:{variant:{default:"bg-primary text-primary-foreground hover:bg-primary/90",destructive:"bg-destructive text-destructive-foreground hover:bg-destructive/90",outline:"border border-input bg-background hover:bg-accent hover:text-accent-foreground",secondary:"bg-secondary text-secondary-foreground hover:bg-secondary/80",ghost:"hover:bg-accent hover:text-accent-foreground",link:"text-primary underline-offset-4 hover:underline"},size:{default:"h-10 px-4 py-2",sm:"h-9 rounded-md px-3",lg:"h-11 rounded-md px-8",icon:"h-10 w-10"}},defaultVariants:{variant:"default",size:"default"}}),A=v.forwardRef(({className:e,variant:t,size:o,asChild:r=!1,...a},l)=>v.createElement(r?z.Slot:"button",{className:i(te({variant:t,size:o,className:e})),ref:l,...a}));A.displayName="Button";var x=f(s("react"));var M=x.forwardRef(({className:e,type:t,...o},r)=>x.createElement("input",{type:t,className:i("flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",e),ref:r,...o}));M.displayName="Input";var n=f(s("react"));var k=n.forwardRef(({className:e,...t},o)=>n.createElement("div",{ref:o,className:i("rounded-lg border bg-card text-card-foreground shadow-sm",e),...t}));k.displayName="Card";var oe=n.forwardRef(({className:e,...t},o)=>n.createElement("div",{ref:o,className:i("flex flex-col space-y-1.5 p-6",e),...t}));oe.displayName="CardHeader";var re=n.forwardRef(({className:e,...t},o)=>n.createElement("div",{ref:o,className:i("text-2xl font-semibold leading-none tracking-tight",e),...t}));re.displayName="CardTitle";var ae=n.forwardRef(({className:e,...t},o)=>n.createElement("div",{ref:o,className:i("text-sm text-muted-foreground",e),...t}));ae.displayName="CardDescription";var se=n.forwardRef(({className:e,...t},o)=>n.createElement("div",{ref:o,className:i("p-6 pt-0",e),...t}));se.displayName="CardContent";var ne=n.forwardRef(({className:e,...t},o)=>n.createElement("div",{ref:o,className:i("flex items-center p-6 pt-0",e),...t}));ne.displayName="CardFooter";var m=s("lucide-react"),h=f(s("next/image")),B=f(s("next/link")),L=s("framer-motion"),ie=e=>{let o=e.replace(/<a href="([^"]+)"[^>]*>[^<]*<\/a>/g,"$1").replace(/\[([^\]]+)\]\(([^)]+)\)/g,"$2"),r=/(https?:\/\/[^\s]+)/g;return o.split(r).map((a,l)=>r.test(a)?React.createElement("a",{key:l,href:a,target:"_blank",rel:"noopener noreferrer",className:"text-blue-400 hover:underline"},a):a)},le=({content:e,delay:t})=>React.createElement(L.motion.div,{initial:{opacity:0,y:10},animate:{opacity:1,y:0},transition:{delay:t},className:"mb-2"},ie(e)),de=(e,t)=>e.split(`
 
-// This function will be called by the widget script
-window.mountNekoFoxChat = function(containerId, shadowRoot) {
-  // If we're using Shadow DOM
-  if (shadowRoot) {
-    const container = shadowRoot.getElementById(containerId);
-    
-    // We need to inject our CSS into the Shadow DOM
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
+`).map((r,a)=>React.createElement("div",{key:a,className:`px-4 py-2 rounded-lg mb-2 ${t?"bg-orange-600 text-white":"bg-gray-100 text-gray-800"}`},React.createElement(le,{content:r,delay:a*.5})));function T({onClose:e}){let[t,o]=(0,c.useState)([]),[r,a]=(0,c.useState)(""),[l,w]=(0,c.useState)(!1),H=(0,c.useRef)(null),[N,K]=(0,c.useState)(!1),b=(0,c.useRef)(0),$=()=>{H.current?.scrollIntoView({behavior:"smooth"})};(0,c.useEffect)(()=>{$()},[t,l]);let q=()=>{K(!N)},ce=["This is a demo frontend for the LADAKA chatbot. In the real version, I'll be powered by AI to answer your questions about our design studio. \u{1F44B}","I'm just a demo right now, but the real LADAKA will be able to provide detailed information about our services, pricing, and portfolio. \u{1F44B}","When fully implemented, I'll be able to help with inquiries about design services, project timelines, and booking consultations. \u{1F44B}","Thanks for trying out this demo! The complete version will have much more functionality and real-time responses. \u{1F44B}","In the full version, I'll be able to showcase our portfolio examples and discuss your specific project needs. \u{1F44B}"],O=d=>{a(d.target.value)},_=async d=>{if(d.preventDefault(),!r.trim()||l)return;let U=`user-${b.current}`;b.current+=1;let D={id:U,content:r,role:"user"};o(g=>[...g,D]),a(""),w(!0);try{let g=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:[...t,D]})}),u=await g.json();if(console.log("API response:",u),!g.ok)throw new Error(u.error||"Failed to get response");let C=`assistant-${b.current}`;b.current+=1;let J={id:C,content:u.content||u.output||u.response||u.message||u.text||"Sorry, I couldn't process that request.",role:"assistant"};o(Q=>[...Q,J])}catch(g){console.error("Error:",g);let u={id:`error-${b.current}`,content:"I apologize, but I'm having trouble connecting right now. Please try again in a moment.",role:"assistant"};o(C=>[...C,u])}finally{w(!1)}};return React.createElement(L.motion.div,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},exit:{opacity:0,y:20},className:`fixed inset-x-0 bottom-0 z-50 
+                 w-[100%] sm:w-[400px] md:w-[450px]
+                 sm:right-8 sm:left-auto
+                 m-0 sm:m-4`},React.createElement(k,{className:"overflow-hidden shadow-xl border-t sm:border border-orange-200 rounded-none sm:rounded-lg"},React.createElement("div",{className:"bg-orange-600 text-white p-3 sm:p-4 flex justify-between items-center"},React.createElement("div",{className:"flex items-center space-x-2 sm:space-x-3"},React.createElement("div",{className:"w-8 h-8 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-orange-300"},React.createElement(h.default,{src:"/Ladaka Chatbot.jpeg",alt:"Chatbot Avatar",width:48,height:48,className:"object-cover"})),React.createElement("span",{className:"font-medium text-base sm:text-lg"},"LADAKA")),React.createElement("div",{className:"flex space-x-2"},React.createElement("button",{onClick:q,className:"text-white hover:text-orange-200 p-1"},N?React.createElement(m.ChevronUp,{size:20}):React.createElement(m.ChevronDown,{size:20})),React.createElement("button",{onClick:e,className:"text-white hover:text-orange-200"},React.createElement(m.X,{size:20})))),!N&&React.createElement(React.Fragment,null,React.createElement("div",{className:"h-[60vh] sm:h-96 overflow-y-auto p-4 bg-white"},t.length===0?React.createElement("div",{className:"flex flex-col items-center justify-center h-full text-center text-gray-700"},React.createElement("div",{className:"w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-orange-400"},React.createElement(h.default,{src:"/Ladaka Chatbot.jpeg",alt:"LADAKA Avatar",width:128,height:128,className:"object-cover"})),React.createElement("p",{className:"text-lg font-medium text-orange-800 mb-2"},"Hey there, I am LADAKA \u{1F44B}"),React.createElement("p",{className:"max-w-xs"},"I'm ready to answer any questions you may have related to my Design Studio and services!")):React.createElement(React.Fragment,null,t.map(d=>React.createElement("div",{key:d.id,className:`mb-4 flex ${d.role==="user"?"justify-end":"justify-start"}`},d.role!=="user"&&React.createElement("div",{className:"w-8 h-8 rounded-full overflow-hidden mr-2 flex-shrink-0"},React.createElement(h.default,{src:"/Ladaka Chatbot.jpeg",alt:"LADAKA Avatar",width:32,height:32,className:"object-cover"})),React.createElement("div",{className:`max-w-[80%] ${d.role==="user"?"items-end":"items-start"}`},de(d.content,d.role==="user")))),l&&t.length>0&&t[t.length-1].role==="user"&&React.createElement("div",{className:"mb-4 flex justify-start"},React.createElement("div",{className:"w-8 h-8 rounded-full overflow-hidden mr-2 flex-shrink-0"},React.createElement(h.default,{src:"/Ladaka Chatbot.jpeg",alt:"LADAKA Avatar",width:32,height:32,className:"object-cover"})),React.createElement("div",{className:"px-4 py-3 rounded-lg bg-gray-100 flex items-center"},React.createElement("div",{className:"typing-animation"},React.createElement("span",{className:"dot"}),React.createElement("span",{className:"dot"}),React.createElement("span",{className:"dot"}))))),React.createElement("div",{ref:H})),React.createElement("form",{onSubmit:_,className:"p-3 border-t border-gray-200 bg-white"},React.createElement("div",{className:"flex space-x-2"},React.createElement(M,{value:r,onChange:O,placeholder:"Ask your questions here!",className:"flex-grow border-orange-200 focus:border-orange-500 text-base",style:{fontSize:"16px"},disabled:l}),React.createElement(A,{type:"submit",disabled:l||!r.trim(),className:"bg-orange-600 hover:bg-orange-700 px-3 sm:px-4"},l?React.createElement(m.Loader2,{className:"h-4 w-4 animate-spin"}):React.createElement(m.Send,{className:"h-4 w-4"})))),React.createElement("div",{className:"p-2 border-t border-gray-200 bg-gray-50"},React.createElement("div",{className:"flex flex-col items-center text-center"},React.createElement("p",{className:"text-xs text-gray-500 mb-1"},"Designed by Techlo Design Solutions"),React.createElement(B.default,{href:"https://techlodesignsolutions.com/",target:"_blank",rel:"noopener noreferrer",className:"group flex flex-col items-center hover:opacity-90 transition-opacity"},React.createElement("div",{className:"w-8 h-8 mb-1"},React.createElement(h.default,{src:"/images/techlo-logo.png",alt:"Techlo Design Solutions Logo",width:32,height:32,className:"object-contain"})),React.createElement("p",{className:"text-xs text-orange-600 group-hover:underline"},"Want your own chat assistant?")))))),React.createElement("style",{jsx:!0,global:!0},`
+        .typing-animation {
+          display: flex;
+          align-items: center;
+        }
+        
+        .dot {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: #666;
+          margin: 0 2px;
+          animation: bounce 1.4s infinite ease-in-out both;
+        }
+        
+        .dot:nth-child(1) {
+          animation-delay: -0.32s;
+        }
+        
+        .dot:nth-child(2) {
+          animation-delay: -0.16s;
+        }
+        
+        @keyframes bounce {
+          0%, 80%, 100% { 
+            transform: scale(0);
+          } 40% { 
+            transform: scale(1.0);
+          }
+        }
+      `))}var V=f(s("next/image")),F=s("framer-motion");function I({onClick:e}){return React.createElement(F.motion.div,{className:"cursor-pointer relative",whileHover:{scale:1.05},whileTap:{scale:.95},onClick:e},React.createElement("div",{className:"absolute -top-12 right-0 bg-white p-2 rounded-xl shadow-md border-2 border-orange-600 z-10"},React.createElement("p",{className:"text-orange-800 font-medium text-base"},"Any Questions?"),React.createElement("div",{className:"absolute -bottom-2 right-8 w-3 h-3 bg-white border-r-2 border-b-2 border-orange-600 transform rotate-45"})),React.createElement("div",{className:"relative w-40 h-40 rounded-full overflow-hidden border-4 border-orange-600 shadow-lg"},React.createElement(V.default,{src:"https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-04-15%20at%202.39.12%E2%80%AFPM.jpeg-m4ieEQbpH98R1mzpJgqZPSqvUOXC2a.png",alt:"Chatbot Avatar",fill:!0,className:"object-cover",priority:!0})),React.createElement("div",{className:"absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white px-4 py-1 rounded-full text-xs font-medium shadow-md w-32 text-center"},"Chat with LADAKA"))}function y(){let[e,t]=(0,p.useState)(!1);return p.default.createElement("div",{className:"nekofox-chatbot"},p.default.createElement("style",null,`
+        /* Base styles for the chatbot */
+        .nekofox-chatbot {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        /* Add more styles as needed */
+      `),e?p.default.createElement(T,{onClose:()=>{t(!1)}}):p.default.createElement("div",{className:"fixed bottom-4 right-4 z-50"},p.default.createElement(I,{onClick:()=>{t(!0)}})))}window.mountNekoFoxChat=function(e,t){if(t){let o=t.getElementById(e),r=document.createElement("style");r.textContent=`
       /* Your tailwind-generated CSS would go here */
       /* For now, we'll include basic styles */
       .fixed { position: fixed; }
@@ -17,16 +48,4 @@ window.mountNekoFoxChat = function(containerId, shadowRoot) {
       .right-4 { right: 1rem; }
       .z-50 { z-index: 50; }
       /* Add more styles as needed */
-    `;
-    shadowRoot.appendChild(styleSheet);
-    
-    const root = createRoot(container);
-    root.render(<ChatApp />);
-  } 
-  // Regular DOM mounting
-  else {
-    const container = document.getElementById(containerId);
-    const root = createRoot(container);
-    root.render(<ChatApp />);
-  }
-}; 
+    `,t.appendChild(r),(0,R.createRoot)(o).render(React.createElement(y,null))}else{let o=document.getElementById(e);(0,R.createRoot)(o).render(React.createElement(y,null))}};})();
