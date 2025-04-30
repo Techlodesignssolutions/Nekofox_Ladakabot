@@ -16,7 +16,8 @@ esbuild.build({
     })
   ],
   define: {
-    'process.env.NODE_ENV': '"production"'
+    'process.env.NODE_ENV': '"production"',
+    'global': 'window'
   },
   loader: {
     '.tsx': 'tsx',
@@ -28,5 +29,6 @@ esbuild.build({
     '.png': 'dataurl',
     '.jpg': 'dataurl',
     '.jpeg': 'dataurl'
-  }
+  },
+  external: ['react-dom/client', 'react']
 }).catch(() => process.exit(1)); 
