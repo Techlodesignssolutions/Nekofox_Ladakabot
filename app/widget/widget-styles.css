@@ -1,0 +1,16 @@
+/* Target the specific widget HTML and body */
+html.widget-html,
+body.widget-body {
+  background-color: transparent !important;
+}
+
+/* Make sure the chat interface container is transparent */
+.chat-container {
+  background-color: transparent !important;
+}
+
+/* But keep the actual chat card white or slightly transparent */
+.chat-card {
+  background-color: rgba(255, 255, 255, 0.98);
+  border-radius: 10px;
+} 

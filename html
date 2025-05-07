@@ -1,0 +1,45 @@
+<div id="ladaka-container" style="
+     position:fixed;
+     bottom:20px; right:20px;
+     width:64px; height:64px;
+     z-index:9999;
+     border-radius:50%;
+     background:transparent;
+     transition:all 0.3s ease;
+     overflow:hidden;
+     pointer-events:none;">  <!-- Make container click-through -->
+  <iframe
+    id="ladaka-iframe"
+    src="https://nekofox-ladakabot.vercel.app/widget?state=closed"
+    style="border:none;width:100%;height:100%;pointer-events:auto;background-color:transparent;" 
+    sandbox="allow-scripts allow-same-origin allow-popups"
+    allow="clipboard-write microphone camera"
+    allowTransparency="true">
+  </iframe>
+</div>
+
+<script>
+  const container = document.getElementById('ladaka-container');
+  const iframe = document.getElementById('ladaka-iframe');
+  
+  window.addEventListener('message', function(event) {
+    if (event.origin !== 'https://nekofox-ladakabot.vercel.app') return;
+    
+    if (event.data === 'open') {
+      container.style.width = '400px';
+      container.style.height = '600px';
+      container.style.borderRadius = '10px';
+      container.style.boxShadow = '0 4px 12px rgba(0,0,0,.15)';
+      // Keep background transparent for click-through
+      container.style.background = 'transparent';
+    }
+    
+    if (event.data === 'close') {
+      container.style.width = '64px';
+      container.style.height = '64px';
+      container.style.borderRadius = '50%';
+      container.style.boxShadow = 'none';
+      container.style.background = 'transparent';
+    }
+  });
+</script> 

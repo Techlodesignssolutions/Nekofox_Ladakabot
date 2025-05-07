@@ -32,12 +32,26 @@ export default function ChatApp() {
         /* Base styles for the chatbot */
         .nekofox-chatbot {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+          pointer-events: auto; /* Ensure the chatbot captures clicks */
         }
         /* Add more styles as needed */
         .fixed { position: fixed; }
         .bottom-4 { bottom: 1rem; }
         .right-4 { right: 1rem; }
         .z-50 { z-index: 50; }
+        
+        /* Make transparent areas click-through */
+        .nekofox-chatbot-background {
+          pointer-events: none;
+        }
+        
+        /* But ensure actual components capture clicks */
+        .nekofox-chatbot button,
+        .nekofox-chatbot input,
+        .nekofox-chatbot a,
+        .nekofox-chatbot [role="button"] {
+          pointer-events: auto;
+        }
       `}</style>
       
       {isChatVisible ? (

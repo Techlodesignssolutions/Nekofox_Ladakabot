@@ -92,3 +92,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+body.widget-page,
+html.widget-page {
+  background-color: transparent !important;
+}

@@ -12,7 +12,11 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface ChatInterfaceProps {
-  onClose: () => void
+  onClose?: () => void;
+  onMinimize?: () => void;
+  initialMessage?: string;
+  showHeader?: boolean;
+  autoFocus?: boolean;
 }
 
 // Demo message type to mimic the AI SDK's message format
@@ -68,8 +72,30 @@ const renderMessage = (content: string, isUser: boolean) => {
   ))
 }
 
-export default function ChatInterface({ onClose }: ChatInterfaceProps) {
-  const [messages, setMessages] = useState<Message[]>([])
+export default function ChatInterface({ 
+  onClose, 
+  onMinimize,
+  initialMessage = "Hello! How can I assist you today?",
+  showHeader = true,
+  autoFocus = false
+}: ChatInterfaceProps) {
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: "welcome-message",
+      content: initialMessage,
+      role: "assistant"
+    }
+  ]);
+  
+  const inputRef = useRef<HTMLInputElement>(null);
+  
+  // Auto-focus the input if autoFocus is true
+  useEffect(() => {
+    if (autoFocus && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [autoFocus]);
+  
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -86,6 +112,9 @@ export default function ChatInterface({ onClose }: ChatInterfaceProps) {
 
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized)
+    if (onMinimize) {
+      onMinimize()
+    }
   }
 
   // Demo responses
@@ -157,40 +186,61 @@ export default function ChatInterface({ onClose }: ChatInterfaceProps) {
     }
   }
 
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
+    
+    // Send message to parent window
+    if (window.parent) {
+      window.parent.postMessage('close', '*');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="fixed inset-x-0 bottom-0 z-50 
-                 w-[100%] sm:w-[400px] md:w-[450px]
-                 sm:right-8 sm:left-auto
-                 m-0 sm:m-4"
+      className="fixed inset-x-0 bottom-0 z-50 flex flex-col"
+      style={{ 
+        maxHeight: "100vh",
+        backgroundColor: "transparent" 
+      }}
     >
-      <Card className="overflow-hidden shadow-xl border-t sm:border border-orange-200 rounded-none sm:rounded-lg">
-        {/* Header */}
-        <div className="bg-orange-600 text-white p-3 sm:p-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-orange-300">
-              <Image
-                src="/Ladaka Chatbot.jpeg"
-                alt="Chatbot Avatar"
-                width={48}
-                height={48}
-                className="object-cover"
-              />
+      <Card
+        className="w-full h-full flex flex-col overflow-hidden"
+        style={{
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          borderRadius: "10px"
+        }}
+      >
+        {showHeader && (
+          <div className="bg-orange-600 text-white p-3 sm:p-4 flex justify-between items-center">
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 border-orange-300">
+                <Image
+                  src="https://nekofox-ladakabot.vercel.app/Ladaka%20Chatbot.jpeg"
+                  alt="Chatbot Avatar"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                />
+              </div>
+              <span className="font-medium text-base sm:text-lg">LADAKA</span>
             </div>
-            <span className="font-medium text-base sm:text-lg">LADAKA</span>
+            <div className="flex space-x-2">
+              <button onClick={toggleMinimize} className="text-white hover:text-orange-200 p-1">
+                {isMinimized ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </button>
+              {onClose && (
+                <button onClick={handleClose} className="text-white hover:text-orange-200">
+                  <X size={20} />
+                </button>
+              )}
+            </div>
           </div>
-          <div className="flex space-x-2">
-            <button onClick={toggleMinimize} className="text-white hover:text-orange-200 p-1">
-              {isMinimized ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-            </button>
-            <button onClick={onClose} className="text-white hover:text-orange-200">
-              <X size={20} />
-            </button>
-          </div>
-        </div>
+        )}
 
         {!isMinimized && (
           <>
@@ -266,6 +316,7 @@ export default function ChatInterface({ onClose }: ChatInterfaceProps) {
             <form onSubmit={handleSubmit} className="p-3 border-t border-gray-200 bg-white">
               <div className="flex space-x-2">
                 <Input
+                  ref={inputRef}
                   value={input}
                   onChange={handleInputChange}
                   placeholder="Ask your questions here!"

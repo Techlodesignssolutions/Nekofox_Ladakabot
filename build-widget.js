@@ -5,7 +5,7 @@ const path = require('path');
 esbuild.build({
   entryPoints: ['app/chatbot-bundle.js'],
   bundle: true,
-  minify: true,
+  minify: false,
   outfile: 'public/chatbot-bundle.js',
   format: 'iife',
   platform: 'browser',
@@ -29,6 +29,10 @@ esbuild.build({
     '.png': 'dataurl',
     '.jpg': 'dataurl',
     '.jpeg': 'dataurl'
-  },
-  external: ['react-dom/client', 'react']
-}).catch(() => process.exit(1)); 
+  }
+}).then(() => {
+  console.log('Build completed successfully');
+}).catch((error) => {
+  console.error('Build failed:', error);
+  process.exit(1);
+}); 
